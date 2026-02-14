@@ -1,0 +1,38 @@
+.container {
+  @include containerStyles;
+
+  background: var(--gray);
+
+  .wrapper {
+    @include pageStyles;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 20px;
+
+
+    .text {
+      color: var(--white);
+      font-size: var(--font-size-small);
+    }
+
+    .link {
+      color: var(--blue);
+
+      &:hover {
+        color: var(--pink);
+      }
+    }
+
+    .disabled {
+      pointer-events: none;
+      color: var(--disabled-color);
+
+      &:hover {
+        color: var(--disabled-color);
+      }
+    }
+  }
+}

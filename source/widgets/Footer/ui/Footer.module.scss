@@ -1,0 +1,10 @@
+.container {
+  @include containerStyles;
+
+  background: var(--gray);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--white);
+
+}

@@ -1,0 +1,31 @@
+.container {
+  @include containerStyles;
+
+  background-color: var(--white);
+  border-bottom: 2px solid var(--disabled-color);
+
+  .wrapper {
+    @include pageStyles;
+
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    overflow-y: scroll;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    a {
+      white-space: nowrap;
+      color: var(--black);
+      font-size: var(--font-size-medium);
+
+      &:hover {
+        color: var(--pink);
+      }
+    }
+
+  }
+}

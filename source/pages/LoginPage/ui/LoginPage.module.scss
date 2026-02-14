@@ -1,0 +1,55 @@
+.container {
+  @include mainContainerStyles;
+
+  .title {
+    text-align: center;
+    font-weight: bold;
+    font-size: var(--font-size-medium);
+  }
+
+  .formContainer {
+    margin: 24px auto 0;
+    padding: 0 20px;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    max-width: 600px;
+
+    .error {
+      text-align: center;
+      color: var(--pink);
+      font-size: var(--font-size-small);
+    }
+
+    .input {
+      height: 40px;
+      padding: 0 10px;
+      font-size: var(--font-size-medium);
+
+      &::placeholder {
+        color: var(--light-gray);
+      }
+    }
+
+    .submitButton {
+      cursor: pointer;
+      font-weight: bold;
+      font-size: var(--font-size-medium);
+      color: var(--white);
+      height: 40px;
+      border: none;
+      outline: none;
+      background: var(--gray);
+
+      &:hover {
+        background: var(--medium-gray);
+      }
+
+      &:disabled {
+        pointer-events: none;
+        color: var(--black);
+        background: var(--light-gray);
+      }
+    }
+  }
+}

@@ -1,0 +1,44 @@
+.container {
+  @include containerStyles;
+
+  background-color: var(--black);
+  border-bottom: 3px solid var(--pink);
+
+  .wrapper {
+    @include pageStyles;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+
+    @include media-max-screen(lg) {
+      flex-direction: column;
+    }
+
+    .title {
+      display: flex;
+      color: var(--white);
+      font-weight: bold;
+      font-size: var(--font-size-big);
+
+      span {
+        color: var(--pink);
+      }
+    }
+
+    .logo {
+      margin-left: auto;
+      background: gray;
+      max-width: 600px;
+      width: 100%;
+      height: 70px;
+
+      @include media-max-screen(lg) {
+        margin: 0 auto;
+      }
+    }
+
+  }
+}

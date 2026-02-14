@@ -1,0 +1,28 @@
+{
+  "extends": "stylelint-config-standard-scss",
+  "rules": {
+    "scss/dollar-variable-pattern": null,
+    "selector-class-pattern": null,
+    "custom-property-pattern": null,
+    "scss/percent-placeholder-pattern": null,
+    "value-keyword-case": null,
+    "value-no-vendor-prefix": null,
+    "property-no-vendor-prefix": null,
+    "selector-no-vendor-prefix": null,
+    "no-descending-specificity": null,
+    "scss/at-mixin-pattern": null,
+    "declaration-block-no-redundant-longhand-properties": null,
+    "selector-pseudo-class-no-unknown": [
+      true,
+      {
+        "ignorePseudoClasses": ["global", "export"]
+      }
+    ],
+    "property-no-unknown": [
+      true,
+      {
+        "ignoreSelectors": [":export"]
+      }
+    ]
+  }
+}

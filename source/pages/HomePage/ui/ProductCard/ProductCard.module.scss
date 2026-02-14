@@ -1,0 +1,43 @@
+.container {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  padding: 10px;
+  border: 1px solid var(--light-gray);
+
+  .title {
+    font-weight: bold;
+  }
+
+  .category {
+    text-transform: uppercase;
+    color: var(--disabled-color);
+  }
+
+  .price {
+    font-weight: bold;
+    color: var(--pink);
+  }
+
+  .button {
+    background-color: var(--blue);
+    color: var(--white);
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    outline: none;
+    height: 40px;
+    border-radius: 16px;
+    font-size: var(--font-size-medium);
+
+    &:hover {
+      background-color: var(--light-blue);
+    }
+  }
+}

@@ -1,0 +1,36 @@
+import { FC } from 'react';
+import { useUserStore } from '@entities/auth';
+import Link from 'next/link';
+import cn from 'clsx';
+import { ROUTES } from '@shared/constants';
+
+import styles from './FirstLine.module.scss';
+
+interface FirstLineProps {
+  remove?: string;
+}
+
+export const FirstLine: FC<FirstLineProps> = () => {
+  const { user, logout, loading } = useUserStore((state) => state);
+
+  return (
+    <div className={styles.container}>
+      <div className={styles.wrapper}>
+        {user && <div className={styles.text}>{`${user.firstName} ${user.lastName}`}</div>}
+        <Link
+          className={cn(styles.link, {
+            [styles.disabled]: loading,
+          })}
+          onClick={() => {
+            if (user) {
+              logout();
+            }
+          }}
+          href={ROUTES.LOGIN}
+        >
+          {user ? 'Logout' : 'Login'}
+        </Link>
+      </div>
+    </div>
+  );
+};

@@ -1,0 +1,25 @@
+.container {
+  @include mainContainerStyles;
+
+  .wrapper {
+    @include pageStyles;
+
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+
+    .title {
+      font-weight: bold;
+      font-size: var(--font-size-medium);
+    }
+
+    .listing {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+  }
+}

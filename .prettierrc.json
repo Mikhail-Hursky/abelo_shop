@@ -1,0 +1,25 @@
+{
+  "printWidth": 100,
+  "trailingComma": "all",
+  "tabWidth": 2,
+  "singleQuote": true,
+  "jsxSingleQuote": true,
+  "overrides": [
+    {
+      "files": [
+        "*.css",
+        "*.scss"
+      ],
+      "options": {
+        "singleQuote": false,
+        "printWidth": 999999999
+      }
+    },
+    {
+      "files": "**/*.test.tsx",
+      "options": {
+        "printWidth": 999999999
+      }
+    }
+  ]
+}

@@ -3,6 +3,7 @@ import { useUserStore } from '@entities/auth';
 import Link from 'next/link';
 import cn from 'clsx';
 import { ROUTES } from '@shared/constants';
+import { useRouter } from 'next/navigation';
 
 import styles from './FirstLine.module.scss';
 
@@ -11,6 +12,7 @@ interface FirstLineProps {
 }
 
 export const FirstLine: FC<FirstLineProps> = () => {
+  const router = useRouter();
   const { user, logout, loading } = useUserStore((state) => state);
 
   return (
@@ -23,7 +25,9 @@ export const FirstLine: FC<FirstLineProps> = () => {
           })}
           onClick={() => {
             if (user) {
-              logout();
+              logout().then(() => {
+                router.refresh();
+              });
             }
           }}
           href={ROUTES.LOGIN}

@@ -11,8 +11,8 @@ export const LoginPage: FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { login, loading: isLoadingUser, errorMessage } = useUserStore((state) => state);
 
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState('emilys');
+  const [password, setPassword] = useState('emilyspass');
 
   const loading = isLoading || isLoadingUser;
   const disabledSubmit = !(username.length >= 3 && password.length >= 3);

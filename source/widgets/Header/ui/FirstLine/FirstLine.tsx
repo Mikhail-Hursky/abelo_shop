@@ -7,11 +7,7 @@ import { useRouter } from 'next/navigation';
 
 import styles from './FirstLine.module.scss';
 
-interface FirstLineProps {
-  remove?: string;
-}
-
-export const FirstLine: FC<FirstLineProps> = () => {
+export const FirstLine: FC = () => {
   const router = useRouter();
   const { user, logout, loading } = useUserStore((state) => state);
 

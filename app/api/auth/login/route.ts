@@ -3,6 +3,7 @@ import { cookies } from 'next/headers';
 import { AxiosError } from 'axios';
 import { axiosInstance } from '@shared/api';
 import { LoginResponse } from '@entities/auth/model';
+import { CONFIG } from '@shared/constants';
 
 export async function POST(request: NextRequest) {
   try {
@@ -16,14 +17,14 @@ export async function POST(request: NextRequest) {
     cookieStore.set('accessToken', res.data.accessToken, {
       httpOnly: true,
       sameSite: 'lax',
-      maxAge: 60 * 60,
+      maxAge: CONFIG.ACCESS_TOKEN_MAX_AGE,
       path: '/',
     });
 
     cookieStore.set('refreshToken', res.data.refreshToken, {
       httpOnly: true,
       sameSite: 'lax',
-      maxAge: 60 * 60 * 24 * 7,
+      maxAge: CONFIG.REFRESH_TOKEN_MAX_AGE,
       path: '/',
     });
 

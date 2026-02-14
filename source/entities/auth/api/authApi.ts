@@ -1,10 +1,11 @@
 import axios, { AxiosResponse } from 'axios';
+import { CONFIG } from '@shared/constants';
 
 import { User, LoginRequest, LoginResponse, RefreshResponse } from '../model/types';
 
 const apiClient = axios.create({
   baseURL: process.env.NEXT_PUBLIC_AUTH_URL,
-  timeout: 10000,
+  timeout: CONFIG.API_TIMEOUT,
   withCredentials: true,
   headers: {
     'Content-Type': 'application/json',

@@ -3,6 +3,7 @@ import { cookies } from 'next/headers';
 import { axiosInstance } from '@shared/api';
 import { LoginResponse } from '@entities/auth/model';
 import { AxiosError } from 'axios';
+import { CONFIG } from '@shared/constants';
 
 export async function POST(request: NextRequest) {
   try {
@@ -23,14 +24,14 @@ export async function POST(request: NextRequest) {
     cookieStore.set('accessToken', data.accessToken, {
       httpOnly: true,
       sameSite: 'lax',
-      maxAge: 60 * 60,
+      maxAge: CONFIG.ACCESS_TOKEN_MAX_AGE,
       path: '/',
     });
 
     cookieStore.set('refreshToken', data.refreshToken, {
       httpOnly: true,
       sameSite: 'lax',
-      maxAge: 60 * 60 * 24 * 7,
+      maxAge: CONFIG.REFRESH_TOKEN_MAX_AGE,
       path: '/',
     });
 
@@ -41,8 +42,11 @@ export async function POST(request: NextRequest) {
     cookieStore.delete('accessToken');
     cookieStore.delete('refreshToken');
 
-    if (error instanceof AxiosError && error) {
-      return NextResponse.json(error.message, { status: error.status });
+    if (error instanceof AxiosError && error.response) {
+      return NextResponse.json(
+        { error: error.response.data?.message || error.message },
+        { status: error.response.status || 500 },
+      );
     }
 
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });

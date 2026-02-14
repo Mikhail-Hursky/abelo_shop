@@ -16,8 +16,6 @@ export interface LoginResponse extends RefreshResponse {
   lastName: string;
   gender: string;
   image: string;
-  accessToken: string;
-  refreshToken: string;
 }
 
 export interface User {

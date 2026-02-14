@@ -3,6 +3,7 @@
 import { FC, SubmitEvent, useState } from 'react';
 import { useUserStore } from '@entities/auth';
 import { useRouter } from 'next/navigation';
+import { CONFIG } from '@shared/constants';
 
 import styles from './LoginPage.module.scss';
 
@@ -15,7 +16,9 @@ export const LoginPage: FC = () => {
   const [password, setPassword] = useState('');
 
   const loading = isLoading || isLoadingUser;
-  const disabledSubmit = !(username.length >= 3 && password.length >= 3);
+  const disabledSubmit = !(
+    username.length >= CONFIG.MIN_USERNAME_LENGTH && password.length >= CONFIG.MIN_PASSWORD_LENGTH
+  );
 
   const handleSubmit = async (e: SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();

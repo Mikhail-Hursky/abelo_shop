@@ -24,18 +24,24 @@ export const getUserDataSSR = async () => {
   }
 
   if (!accessToken && refreshToken) {
-    const refreshResponse = await authApi.refreshToken(refreshToken.value);
+    try {
+      const refreshResponse = await authApi.refreshToken(refreshToken.value);
 
-    if (refreshResponse) {
-      const userResponse = await authApi.getAuthUser(refreshResponse.data.accessToken);
+      if (refreshResponse) {
+        const userResponse = await authApi.getAuthUser(refreshResponse.data.accessToken);
 
-      return {
-        userResponse,
-        refreshResponse,
-      };
+        return {
+          userResponse,
+          refreshResponse,
+        };
+      }
+
+      return null;
+    } catch (_) {
+      await authApi.logout();
+
+      return null;
     }
-
-    return null;
   }
 
   return null;

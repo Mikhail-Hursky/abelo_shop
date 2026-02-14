@@ -1,6 +1,7 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
+  output: 'standalone',
   sassOptions: {
     additionalData: '@use "@/shared/styles/mixins" as *;',
   },
